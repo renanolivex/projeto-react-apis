@@ -1,15 +1,13 @@
 import React from "react"
-import { ListTitle, PokeMain } from "../PokemonListPage/PokemonListStyle"
+import { ListTitle, PokeMain } from "../pokemonListPage/PokemonListStyle"
 import { BaseStatsCard, DetailCard, DetailMainContainer, PokeTypeContainer, PokeType, SpriteBackCard, SpriteFrontCard, StatusCard } from "./PokemonDetailStyle"
 import { SpriteContainer, ImageContainer, BaseStatsContainer,MovesContainer, MoveCard, PokeNumber, PokeName } from "./PokemonDetailStyle"
-
-
-
 
 
 export function PokemonDetail (){
     return(
         <div>
+        
             <PokeMain><ListTitle>Detalhes</ListTitle>
 
             <DetailMainContainer>

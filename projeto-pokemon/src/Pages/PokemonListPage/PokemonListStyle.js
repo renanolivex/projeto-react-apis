@@ -8,6 +8,8 @@ font-weight: bold;
 font-family: "Poppins";
 color: white;
 font-size: 2.4vw;
+height: 300vh;
+
 `
 
 export const ListTitle = styled.h1`
@@ -24,5 +26,7 @@ flex-wrap:wrap;
 gap: 1vw;
 justify-content: flex-start;
 margin-left: 2vw;
+
+
 `
 

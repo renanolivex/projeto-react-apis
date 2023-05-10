@@ -1,24 +1,105 @@
 import React from "react"
 import { PokeLogo, PokeDexButton, HeaderMain, ContainerPokedex, P } from "./HeaderStyle"
-import PokemonLogo from "../Image/LogoPoke.png"
+import PokemonLogo from "../../assets/LogoPoke.png"
 
-export function Header (){
-    return(
-        <div>
-        <HeaderMain>
+import { goToHome, goToPokeDex } from "../../routes/coordinator"
+import { useLocation, useNavigate } from "react-router-dom"
+import { PokeHomeLink } from "./HeaderStyle2"
 
 
-        <a href="#"><PokeLogo src= {PokemonLogo}/></a>
 
-        <ContainerPokedex>
-        <a href="#"><PokeDexButton><P>PokéDex</P></PokeDexButton></a>
-        </ContainerPokedex>
-        </HeaderMain>
+function Header() {
+    const location = useLocation();
+    const navigate = useNavigate();
+  
+    const renderHeader = () => {
+      switch (location.pathname) {
+        case "/":
+          return (
+            <HeaderMain>
+                        <PokeLogo src={PokemonLogo} />
+
+                        <ContainerPokedex>
+                            <PokeDexButton onClick={() => { goToPokeDex(navigate) }}><P>PokéDex</P></PokeDexButton>
+                        </ContainerPokedex>
+                    </HeaderMain>
+          );
+        case "/pokedex":
+          return (
+            <HeaderMain>
+                <PokeHomeLink onClick={()=>{goToHome(navigate)}}>{"<"} <b>Todos Pokémons</b></PokeHomeLink>
+                <PokeLogo src= {PokemonLogo}/>
+                
+                </HeaderMain>
+
+          );
+        default:
+          return (
+            <>
+             <HeaderMain>
+                <PokeHomeLink onClick={()=>{goToHome(navigate)}}>{"<"} <b>Todos Pokémons</b></PokeHomeLink>
+                <PokeLogo src= {PokemonLogo}/>
+                
+                </HeaderMain>
+            </>
+          );
+      }
+    };
+  
+    return <>{renderHeader()}</>;
+  }
+  
+  export default Header;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* export function Header() {
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    const locationHeader = () => {
+        switch (location.pathname) {
+            case "/":
+                return (
+
+                    <HeaderMain>
+                        <PokeLogo src={PokemonLogo} />
+
+                        <ContainerPokedex>
+                            <PokeDexButton onClick={() => { goToPokeDex(navigate) }}><P>PokéDex</P></PokeDexButton>
+                        </ContainerPokedex>
+                    </HeaderMain>)
+
+            case "/pokedex":
+            return(
+                <HeaderMain>
+                <PokeHomeLink onClick={()=>{goToHome(navigate)}}>{"<"} <b>Todos Pokémons</b></PokeHomeLink>
+                <PokeLogo src= {PokemonLogo}/>
+                
+                </HeaderMain>
+
+            )
+
+           
+    
+            
+        }
+
+        return <HeaderMain>{locationHeader()}</HeaderMain>
        
-        </div>
-
-    )
 
 
-
-}
+    }
+} */
